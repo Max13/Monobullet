@@ -51,11 +51,12 @@ Then, add this line to Laravel's `config/app.php`, inside the `providers` array:
 Put this wherever your framework's doc is telling you to do (`parameters` references are above):
 
 ```php
-use Monobullet\Handler;
+use Monobullet\PushbulletHandler;
+// or: use Monobullet\Handler;
 use Monolog\Logger;
 
 $logger = new Logger('NAME'); // Will be used as the title of the push
-$logger->pushHandler(new Handler('PUSHBULLET_TOKEN', $recipients, $level = Logger::INFO, $bubble = false));
+$logger->pushHandler(new PushbulletHandler('PUSHBULLET_TOKEN', $recipients, $level = Logger::INFO, $bubble = false));
 $logger->info('This is just a test log'); // You will receive a push saying this content
 ```
 
