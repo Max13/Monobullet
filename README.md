@@ -27,6 +27,7 @@ Add these lines to your `config/services.php`:
     'recipients' => 'email',
     'level' => Monolog\Logger::INFO,
     'propagate' => true,
+    'env' => ['staging', 'production'],
 ],
 ```
 
@@ -37,6 +38,7 @@ Here are the variables references:
 * `recipients`: Can either be 1 email address, or an array of email addresses.
 * `level`: Minimum level to take care. The default is `Monolog\Logger:INFO`.
 * `propagate`: When `false`, if a record is handled, it won't be propagated to other handlers.
+* `env`: Can either be 1 environment name (like `production`) or an array of environment name.
 
 Then, add this line to Laravel's `config/app.php`, inside the `providers` array:
 

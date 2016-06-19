@@ -17,13 +17,15 @@ class MonobulletServiceProvider extends ServiceProvider
     {
         parent::boot();
 
-        $monolog = Log::getMonolog();
-        $monolog->pushHandler(new PushbulletHandler(
-            config('services.monobullet.token'),
-            config('services.monobullet.recipients'),
-            config('services.monobullet.level', Logger::INFO),
-            config('services.monobullet.propagate', true)
-        ));
+        if (in_array(config('app.env'), (array) config('services.monobullet.env', config('app.env')))) {
+            $monolog = Log::getMonolog();
+            $monolog->pushHandler(new PushbulletHandler(
+                config('services.monobullet.token'),
+                config('services.monobullet.recipients'),
+                config('services.monobullet.level', Logger::INFO),
+                config('services.monobullet.propagate', true)
+            ));
+        }
     }
 
     /**
