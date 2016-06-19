@@ -51,7 +51,7 @@ class Formatter extends NormalizerFormatter
             $record['message'] = sprintf(
                 '%s'.PHP_EOL.'----------'.PHP_EOL.'%s',
                 $message,
-                implode(PHP_EOL.PHP_EOL, $stack)
+                implode(PHP_EOL.PHP_EOL, $ministack)
             );
             $record['extra']['stack'] = $stack;
         }
